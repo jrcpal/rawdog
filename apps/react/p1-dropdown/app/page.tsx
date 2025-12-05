@@ -1,6 +1,14 @@
 "use client";
+import items from "./groceryItems";
+import React, { useState } from "react";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="flex min-h-screen items-start justify-left bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center py-32 px-16 bg-white dark:bg-black sm:items-start">
@@ -9,13 +17,26 @@ export default function Home() {
             Simple Dropdown
           </h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            React nested dropdown displaying grocery items 
+            React nested dropdown displaying grocery items
           </p>
         </div>
-        <div className="dropdown bg-red-200 h-20 w-2xl flex flex-col items-start">
+        <div className="dropdown h-20 w-2xl flex flex-col items-start">
           <label>Grocery Items</label>
-          <button className="dropdown-btn w-lg text-left border border-solid border-black" onClick={() => alert("Dropdown button clicked")}>Categories</button>
-          <div id="groeceryDropdown" className="dropdown=content"></div>
+          <button
+            className="dropdown-btn w-lg text-left border border-solid border-black"
+            onClick={() => toggleDropdown()}
+          >
+            Categories
+          </button>
+          {items && isOpen && (
+            <div id="groeceryDropdown" className="dropdown=content">
+              <ul>
+                {Object.keys(items).map((category) => (
+                  <li key={category}>{category}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </main>
     </div>

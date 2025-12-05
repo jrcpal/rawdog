@@ -14,7 +14,9 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
+
+**Note:** The `dev` script automatically uses the correct Node.js version (via `.nvmrc`) and runs on port 3001.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
